@@ -1,0 +1,8 @@
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\obj\x86\Debug\_1С_ФорматерКода.Form1.resources
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\obj\x86\Debug\_1С_ФорматерКода.Properties.Resources.resources
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\obj\x86\Debug\1С_ФорматерКода.csproj.GenerateResource.Cache
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\bin\Debug\1С_ФорматерКода.exe.config
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\bin\Debug\1С_ФорматерКода.exe
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\bin\Debug\1С_ФорматерКода.pdb
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\obj\x86\Debug\1С_ФорматерКода.exe
+C:\Users\Administrator\documents\visual studio 2010\Projects\1С_ФорматерКода\1С_ФорматерКода\obj\x86\Debug\1С_ФорматерКода.pdb
