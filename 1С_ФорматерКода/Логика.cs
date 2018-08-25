@@ -56,50 +56,6 @@ namespace _1С_ФорматерКода
             return Value;
         }
 
-        string Конвертировать_1C_В_VBS(string Value)
-        {
-            Value = Value.Replace("Для Счетчик", "For Counter");
-            Value = Value.Replace("Пока", "While");
-            Value = Value.Replace("Цикл", "Do");
-            Value = Value.Replace("КонецЦикла", "EndDo");
-            Value = Value.Replace("Пропись", "Spelling");
-            Value = Value.Replace("Процедура", "Procedure");
-            Value = Value.Replace("КонецПроцедуры", "EndProcedure");
-            Value = Value.Replace("Функция", "Function");
-            Value = Value.Replace("КонецФункции", "EndFunction");
-            Value = Value.Replace("Попытка", "Try");
-            Value = Value.Replace("Исключение", "Except");
-            Value = Value.Replace("КонецПопытки", "EndTry");
-            Value = Value.Replace("ИначеЕсли", "ElseIf");
-            Value = Value.Replace("КонецЕсли", "EndIf");
-            Value = Value.Replace("Если", "If");
-            Value = Value.Replace("Тогда", "Then");
-            Value = Value.Replace("Иначе", "Else");
-            return Value;
-        }
-
-        string Конвертировать_VBS_В_1С(string Value)
-        {
-            Value = Value.Replace("For Counter", "Для Счетчик");
-            Value = Value.Replace("While", "Пока");
-            Value = Value.Replace("Do", "Цикл");
-            Value = Value.Replace("EndDo", "КонецЦикла");
-            Value = Value.Replace("Spelling", "Пропись");
-            Value = Value.Replace("Procedure", "Процедура");
-            Value = Value.Replace("EndProcedure", "КонецПроцедуры");
-            Value = Value.Replace("Function", "Функция");
-            Value = Value.Replace("EndFunction", "КонецФункции");
-            Value = Value.Replace("Try", "Попытка");
-            Value = Value.Replace("Except", "Исключение");
-            Value = Value.Replace("EndTry", "КонецПопытки");
-            Value = Value.Replace("ElseIf", "ИначеЕсли");
-            Value = Value.Replace("EndIf", "КонецЕсли");
-            Value = Value.Replace("If", "Если");
-            Value = Value.Replace("Then", "Тогда");
-            Value = Value.Replace("Else", "Иначе");
-            return Value;
-        }
-
         string ДобавитьПереносыСтрок(string Value)
         {
             Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"Процедура\s.*?\(.*?\)", "\r\n", Value, "\r\n");//Регулярное выражение
@@ -109,11 +65,13 @@ namespace _1С_ФорматерКода
             Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"КонецФункции", "", Value, "\r\n\r\n");//Регулярное выражение
 
             Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"Для\sСчетчик\s.*?\sЦикл", "\r\n", Value, "\r\n");//Регулярное выражение
+            Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"Для\sКаждого\s.*?\sЦикл", "\r\n", Value, "\r\n");//Регулярное выражение
             Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"Пока\s.*?\sЦикл", "\r\n", Value, "\r\n");//Регулярное выражение
             Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"КонецЦикла;", "", Value, "\r\n");//Регулярное выражение
 
 
-            Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"Если\s.*?\sТогда", "\r\n", Value, "\r\n");//Регулярное выражение
+            Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"(\s|\r|\n|\t)Если\s.*?\sТогда", "\r\n", Value, "\r\n");//Регулярное выражение
+            Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"ИначеЕсли\s.*?\sТогда", "", Value, "\r\n");//Регулярное выражение
             Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"Иначе\s", "", Value, "\r\n");//Регулярное выражение
             Value = ДобавитьТекстВНачалоИКонецСтрокиПоПаттерну(@"КонецЕсли;", "", Value, "\r\n");//Регулярное выражение
 
@@ -166,6 +124,7 @@ namespace _1С_ФорматерКода
                 if (СтрокаНачинаетсяС(list[i], "Попытка") ||
                     СтрокаНачинаетсяС(list[i], "Пока") ||
                     СтрокаНачинаетсяС(list[i], "Для Счетчик") ||
+                    СтрокаНачинаетсяС(list[i], "Для Каждого") ||
                     СтрокаНачинаетсяС(list[i], "Процедура") ||
                     СтрокаНачинаетсяС(list[i], "Функция") ||
                     СтрокаНачинаетсяС(list[i], "Если"))
